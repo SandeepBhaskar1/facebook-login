@@ -6,7 +6,7 @@ const Home = () => {
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_LOCAL_URL || import.meta.env.VITE_BACKEND_CLOUD_URL;
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_CLOUD_URL;
 
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const Home = () => {
     // Clear JWT token from localStorage
     localStorage.removeItem('jwtToken');
 
-    axios.post('http://localhost:1163/logout', {}, { withCredentials: true })
+    axios.post(`${BACKEND_URL}/logout`, {}, { withCredentials: true })
       .then(() => {
         navigate('/login');
       })
