@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: aliceblue;
+}
+
+.logo {
+  display: flex;           
+  justify-content: center; 
+  width: 98%;
+  height: 5vh;
+  margin: 2rem 0.52rem 1.75rem;
+
+}
+
+.logo img {
+  width: 13.1%;
+}
+
+.content-container{
+  border: 0.2px solid grey;
+  display: block;
+  width: 100%;
+}
