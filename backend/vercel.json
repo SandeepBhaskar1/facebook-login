@@ -11,7 +11,7 @@
       "src": "/(.*)",
       "dest": "index.js",
       "headers": {
-        "Access-Control-Allow-Origin": "https://facebook-login-sandeepbhaskar.vercel.app",
+        "Access-Control-Allow-Origin": "https://facebook-login-frontend.vercel.app",
         "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Methods": "GET, OPTIONS, POST, PUT, PATCH, DELETE",
         "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Content-Type, Accept, Authorization"
