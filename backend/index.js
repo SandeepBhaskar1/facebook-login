@@ -12,7 +12,13 @@ const PORT = 1163;
 const FRONTEND_URL = process.env.NODE_ENV === 'production' ? 
 process.env.FRONTEND_CLOUD_URL : process.env.FRONTEND_LOCAL_URL ;
 
-app.use(cors({ origin:`${FRONTEND_URL}` , credentials: true }));
+const corsOption = {
+  origin: process.env.NODE_ENV === 'production' ? 
+  process.env.FRONTEND_CLOUD_URL : process.env.FRONTEND_LOCAL_URL,
+  credentials: true,
+}
+
+app.use(cors(corsOption));
 app.use(express.json());
 app.use(cookieParser());
 

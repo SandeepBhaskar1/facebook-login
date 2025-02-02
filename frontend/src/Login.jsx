@@ -51,6 +51,7 @@ const Login = () => {
             className="w-full p-3 border rounded-md"
             value={formData.emailId}
             onChange={(e) => setFormData({ ...formData, emailId: e.target.value })}
+            autoComplete='current-username'
           />
           <input
             type="password"
