@@ -1,4 +1,3 @@
-// index.js
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -11,7 +10,6 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 1163;
 
-// Updated CORS configuration
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
     ? 'https://facebook-login-frontend.vercel.app'
@@ -21,19 +19,16 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization', 'Cookie']
 };
 
-// Apply CORS with options
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
 app.use(express.json());
 app.use(cookieParser());
 
-// MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.log('Error connecting to MongoDB:', err));
 
-// Updated cookie options
 const cookieOptions = {
   httpOnly: true,
   secure: process.env.NODE_ENV === 'production',
@@ -44,7 +39,6 @@ const cookieOptions = {
     : 'localhost'
 };
 
-// Authentication middleware
 const authenticateToken = (req, res, next) => {
   const token = req.cookies.token || req.headers['authorization']?.split(' ')[1];
   
@@ -61,7 +55,6 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
-// Register endpoint
 app.post('/register', async (req, res) => {
   const { firstName, surName, dateOfBirth, gender, emailId, password } = req.body;
 
@@ -112,7 +105,6 @@ app.post('/register', async (req, res) => {
   }
 });
 
-// Login endpoint
 app.post('/login', async (req, res) => {
   const { emailId, password } = req.body;
 
@@ -153,7 +145,6 @@ app.post('/login', async (req, res) => {
   }
 });
 
-// Get user data endpoint
 app.get('/user-data', authenticateToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.userID);
@@ -175,7 +166,6 @@ app.get('/user-data', authenticateToken, async (req, res) => {
   }
 });
 
-// Logout endpoint
 app.post('/logout', (req, res) => {
   res.clearCookie('token', {
     ...cookieOptions,
@@ -184,13 +174,11 @@ app.post('/logout', (req, res) => {
   res.status(200).json({ message: 'Logged out successfully' });
 });
 
-// Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: 'Internal Server Error', error: err.message });
 });
 
-// 404 handler
 app.use((req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });

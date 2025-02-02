@@ -1,8 +1,4 @@
-# React + Vite
+Vercel Deployed Frontend Link=[https://facebook-login-frontend.vercel.app/],
+Vercel Deployed Backend Link=[https://facebook-clone-backend-one.vercel.app/],
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Github Repo = [https://github.com/SandeepBhaskar1/facebook-login/blob/master/frontend/README.md]
