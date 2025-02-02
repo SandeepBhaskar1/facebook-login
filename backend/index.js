@@ -16,7 +16,7 @@ const corsOption = {
   origin: process.env.NODE_ENV === 'production' ? 
   process.env.FRONTEND_CLOUD_URL : process.env.FRONTEND_LOCAL_URL,
   credentials: true,
-}
+};
 
 app.use(cors(corsOption));
 app.use(express.json());
