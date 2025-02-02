@@ -6,7 +6,8 @@ const Home = () => {
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_CLOUD_URL;
+  const BACKEND_URL = import.meta.env.MODE === 'production' ?
+  import.meta.env.VITE_BACKEND_CLOUD_URL : import.meta.env.VITE_BACKEND_LOCAL_URL;
 
 
   useEffect(() => {

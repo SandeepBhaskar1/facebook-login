@@ -14,7 +14,8 @@ const Register = () => {
     gender: '',
   });
 
-  const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_CLOUD_URL;
+  const BACKEND_URL = import.meta.env.MODE === 'production' ?
+  import.meta.env.VITE_BACKEND_CLOUD_URL : import.meta.env.VITE_BACKEND_LOCAL_URL;
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();

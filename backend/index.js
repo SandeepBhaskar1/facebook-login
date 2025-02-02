@@ -9,9 +9,10 @@ require('dotenv').config();
 
 const app = express();
 const PORT = 1163;
-const FRONTEND_URL = process.env.FRONTEND_CLOUD_URL || process.env.FRONTEND_LOCAL_URL;
+const FRONTEND_URL = process.env.NODE_ENV === 'production' ? 
+process.env.FRONTEND_CLOUD_URL : process.env.FRONTEND_LOCAL_URL ;
 
-app.use(cors({ origin:'https://facebook-login-sandeepbhaskar.vercel.app' , credentials: true }));
+app.use(cors({ origin:`${FRONTEND_URL}` , credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
