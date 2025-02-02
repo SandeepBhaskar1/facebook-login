@@ -8,7 +8,8 @@ const Login = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_LOCAL_URL || import.meta.env.VITE_BACKEND_CLOUD_URL;
+  const BACKEND_URL = import.meta.env.MODE === 'production' ? 
+  import.meta.env.VITE_BACKEND_CLOUD_URL : import.meta.env.VITE_BACKEND_LOCAL_URL;
 
   const handleNewUserClick = () => {
     navigate('/register');
@@ -57,6 +58,7 @@ const Login = () => {
             className="w-full p-3 border rounded-md"
             value={formData.password}
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+            autoComplete='current-password'
           />
 
           <button
